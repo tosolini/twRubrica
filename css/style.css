@@ -1,0 +1,26 @@
+/* @import "theme/purple"; */
+.demo-layout-transparent {
+    background: url('../img/background-head.jpg') center / cover;
+  }
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+    color: white;
+  }
+.mdl-layout__content {background: white; margin: auto; min-width: 900px;}
+.mdl-card {min-width: 800px;}
+.mdl-card__media {background-color: #ff4040;}
+.mdl-card__supporting-text {color: rgba(0,0,0,.26);}
+.mdl-textfield__label {color: rgba(0, 0, 0, 0.58);}
+.mdl-textresult {
+  bottom: 0;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+  text-align: left;
+  margin-top: 30px;
+}
+.mdl-odd {background: aliceblue;}

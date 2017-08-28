@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>twRubrica</title>
+<link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
+<script type="text/javaScript" src="node_modules/material-design-lite/material.min.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- css below override default material stylesheet -->  
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/index.js"></script>
+  </head>
+  <body>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header ">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">twRubrica</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#">Preferiti</a>
+            <a class="mdl-navigation__link" href="#">Lavoro</a>
+            <a class="mdl-navigation__link" href="#">Amici</a>
+            <a class="mdl-navigation__link" href="#">Famiglia</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Menu</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="#">Help</a>
+          <a class="mdl-navigation__link" href="#">Version</a>
+          <a class="mdl-navigation__link" href="#">Settings</a>
+          <a class="mdl-navigation__link" href="#">Credits</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+            <center>
+            <div class="mdl-card demo-card-square mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                      <h2 class="mdl-card__title-text">Rubrica</h2>
+                    </div>
+                    <div class="mdl-card__media">
+                      <img src="img/icons8-Smart Card-48.png" width="48" height="48" border="0" alt="" style="padding:20px;">
+                    </div>
+                    <div>
+                    <!-- Numeric Textfield with Floating Label -->
+                    <form>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" id="firstname">
+                                    <label class="mdl-textfield__label" for="firstname">Nome</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" id="lastname">
+                                    <label class="mdl-textfield__label" for="lastname">Cognome</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" id="roadaddress">
+                                    <label class="mdl-textfield__label" for="roadaddress">Via/Piazza/ecc..</label>
+                                  </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" id="city">
+                                    <label class="mdl-textfield__label" for="city">Città</label>
+                                  </div>                                  
+                            <div class="mdl-textfield"></div><div class="mdl-textfield"></div>                      
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="phone">
+                                <label class="mdl-textfield__label" for="phone">Numbero di telefono</label>
+                                <span class="mdl-textfield__error">Puoi inserire solo numeri!</span>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,7}$" id="email">
+                                    <label class="mdl-textfield__label" for="email">Indirizzo E-Mail</label>
+                                    <span class="mdl-textfield__error">E-Mail immessa non valida!</span>
+                                </div>
+                    </form>                        
+                    </div>
+                    <div class="mdl-card__actions  mdl-card--border">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="add">Salva</button>
+                           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="cancel"> Scarta</button>
+                    </div>
+                    <div>
+                        <table class="mdl-textresult">
+                            <thead>
+                              <tr>
+                                <th>Firstname</th>
+                                <th class="mdl-odd">Lastname</th>
+                                <th>Adress</th>
+                                <th class="mdl-odd">City</th>
+                                <th>phone</th>
+                                <th class="mdl-odd">email</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody id="tablebody">
+                            </tbody>
+                          </table>
+                    </div>                    
+                    <div class="mdl-card__supporting-text">
+                            Build with <script>document.write(process.versions.node)</script>,
+                            Chrome <script>document.write(process.versions.chrome)</script>,
+                            and Electron <script>document.write(process.versions.electron)</script>.
+                               <script>
+                                    require('electron').ipcRenderer.on('ping', function(event, message) {
+                                      var linguaggio = document.getElementById("linguaggioId");
+                                      linguaggio.innerHTML = 'language detected: ' + message;
+                                    });
+                                  </script>
+                                  <p id="linguaggioId"></p>
+                            &copy; 2017. All rights reserved. Code by <a href="https://www.tosolini.info">Tosolini.info</a>
+                    </div>
+
+                  </div>    
+                </center>        
+      </main>
+    </div>
+   
+<!-- script footer loading -->
+<script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
+<script>window.i18n = new(require('./locale/i18n'));</script>    
+  </body>
+</html>
