@@ -1,4 +1,4 @@
-# twRubrica
+# < twRubrica />
 A simple address book made with Electron in Material Design
 
 This is my first build from a Electron / Node.js package.
@@ -12,7 +12,7 @@ behavior to this [form](https://tosolini.info/about).
 
 Visit my [website](https://tosolinif.info).
 
-## Installation
+## Installation from source
 
 You'll need [Node.js](https://nodejs.org) installed on your computer in order to build this app.
 
@@ -27,4 +27,13 @@ $ npm start
 The main language is Italian, but i provide English too.
 
 ## Credits
-[Icons](https://icons8.com/icon/54896/Address-Book]) credits
+[Node.js](https://nodejs.org/it/)
+[Electron](https://electron.atom.io)
+[Nedb](https://github.com/louischatriot/nedb)
+[Material design](https://github.com/google/material-design-lite) by Google
+[Icons](https://icons8.com]) credits
+[jQuery](https://jquery.com)
+
+## inspiration and learn
+[Electron Demo](https://github.com/simonschiller/electron-demo) by Simon Schiller
+[Electron localization](https://www.christianengvall.se/electron-localization/) by Christian Engvall

@@ -16,7 +16,7 @@
       <header class="mdl-layout__header ">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">twRubrica</span>
+          <span class="mdl-layout-title">&lt; twRubrica /&gt;</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
@@ -32,86 +32,91 @@
         <span class="mdl-layout-title">Menu</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="#">Help</a>
-          <a class="mdl-navigation__link" href="#">Version</a>
+          <a class="mdl-navigation__link" id="new-window" href="#">Version</a>
           <a class="mdl-navigation__link" href="#">Settings</a>
           <a class="mdl-navigation__link" href="#">Credits</a>
         </nav>
       </div>
+
       <main class="mdl-layout__content">
             <center>
             <div class="mdl-card demo-card-square mdl-shadow--2dp">
                     <div class="mdl-card__title">
-                      <h2 class="mdl-card__title-text">Rubrica</h2>
                     </div>
                     <div class="mdl-card__media">
                       <img src="img/icons8-Smart Card-48.png" width="48" height="48" border="0" alt="" style="padding:20px;">
                     </div>
+
+
                     <div>
-                    <!-- Numeric Textfield with Floating Label -->
-                    <form>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                    <input class="mdl-textfield__input" type="text" id="firstname">
-                                    <label class="mdl-textfield__label" for="firstname">Nome</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                    <input class="mdl-textfield__input" type="text" id="lastname">
-                                    <label class="mdl-textfield__label" for="lastname">Cognome</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                    <input class="mdl-textfield__input" type="text" id="roadaddress">
-                                    <label class="mdl-textfield__label" for="roadaddress">Via/Piazza/ecc..</label>
-                                  </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                    <input class="mdl-textfield__input" type="text" id="city">
-                                    <label class="mdl-textfield__label" for="city">Città</label>
-                                  </div>                                  
-                            <div class="mdl-textfield"></div><div class="mdl-textfield"></div>                      
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="phone">
-                                <label class="mdl-textfield__label" for="phone">Numbero di telefono</label>
-                                <span class="mdl-textfield__error">Puoi inserire solo numeri!</span>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
-                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,7}$" id="email">
-                                    <label class="mdl-textfield__label" for="email">Indirizzo E-Mail</label>
-                                    <span class="mdl-textfield__error">E-Mail immessa non valida!</span>
-                                </div>
-                    </form>                        
-                    </div>
-                    <div class="mdl-card__actions  mdl-card--border">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="add">Salva</button>
-                           <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="cancel"> Scarta</button>
-                    </div>
-                    <div>
-                        <table class="mdl-textresult">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                             <thead>
                               <tr>
-                                <th>Firstname</th>
-                                <th class="mdl-odd">Lastname</th>
+                                <th class="mdl-data-table__header--sorted-ascending mdl-data-table__header--sorted-descending">Firstname</th>
+                                <th>Lastname</th>
                                 <th>Adress</th>
-                                <th class="mdl-odd">City</th>
+                                <th>City</th>
+                                <th><div id="openMap" class="icon material-icons">map</div><span class="mdl-tooltip" for="openMap">Apri in Google Maps</span></th>
                                 <th>phone</th>
-                                <th class="mdl-odd">email</th>
+                                <th>email</th>
                                 <th></th>
                               </tr>
                             </thead>
                             <tbody id="tablebody">
                             </tbody>
                           </table>
-                    </div>                    
-                    <div class="mdl-card__supporting-text">
-                            Build with <script>document.write(process.versions.node)</script>,
-                            Chrome <script>document.write(process.versions.chrome)</script>,
-                            and Electron <script>document.write(process.versions.electron)</script>.
-                               <script>
-                                    require('electron').ipcRenderer.on('ping', function(event, message) {
-                                      var linguaggio = document.getElementById("linguaggioId");
-                                      linguaggio.innerHTML = 'language detected: ' + message;
-                                    });
-                                  </script>
-                                  <p id="linguaggioId"></p>
-                            &copy; 2017. All rights reserved. Code by <a href="https://www.tosolini.info">Tosolini.info</a>
                     </div>
+                    <div><!-- Colored FAB button with ripple -->
+                      <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons">add</i>
+                      </button>
+                      <span class="mdl-tooltip" for="show-dialog">Add new user!</span>
+                    </div>                    
+                    <!-- popup/modal dialog -->
+                    
+                    <dialog class="mdl-dialog">
+                        <div class="mdl-dialog__content">
+                            <form>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                        <input class="mdl-textfield__input" type="text" id="firstname" required>
+                                        <label class="mdl-textfield__label" for="firstname">Nome</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                        <input class="mdl-textfield__input" type="text" id="lastname" required>
+                                        <label class="mdl-textfield__label" for="lastname">Cognome</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                        <input class="mdl-textfield__input" type="text" id="roadaddress">
+                                        <label class="mdl-textfield__label" for="roadaddress">Via/Piazza/ecc..</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                        <input class="mdl-textfield__input" type="text" id="city">
+                                        <label class="mdl-textfield__label" for="city">Città</label>
+                                </div>                                  
+                                <div class="mdl-textfield"></div><div class="mdl-textfield"></div>                      
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="phone">
+                                    <label class="mdl-textfield__label" for="phone">Numbero di telefono</label>
+                                    <span class="mdl-textfield__error">Puoi inserire solo numeri!</span>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="notDirty">
+                                        <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,7}$" id="email">
+                                        <label class="mdl-textfield__label" for="email">Indirizzo E-Mail</label>
+                                        <span class="mdl-textfield__error">E-Mail immessa non valida!</span>
+                                </div>
+                            </form>                        
+                            <div class="mdl-card__actions">
+                                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="add">Save</button>
+                                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="cancel"> Cancel</button>
+                            </div>
+                            <p>Note: red fields are required</p>
+                        </div>
+                        <div class="mdl-dialog__actions">
+                          <button type="button" class="mdl-button close">Close windows</button>
+                        </div>
+                      </dialog>
+                      <!-- dialog end here -->
+      
 
                   </div>    
                 </center>        
@@ -119,6 +124,32 @@
     </div>
    
 <!-- script footer loading -->
+<script>
+    var dialog = document.querySelector('dialog');
+    var showDialogButton = document.querySelector('#show-dialog');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function() {
+      dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() {
+      dialog.close();
+    });
+// build new window for menu convenience
+const BrowserWindow = require('electron').remote.BrowserWindow
+const path = require('path')
+
+const newWindowBtn = document.getElementById('new-window')
+
+newWindowBtn.addEventListener('click', function (event) {
+  const modalPath = path.join('file://', __dirname, './html/version.html')
+  let win = new BrowserWindow({ width: 400, height: 320 })
+  win.on('close', function () { win = null })
+  win.loadURL(modalPath)
+  win.show()
+})    
+  </script>
 <script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
 <script>window.i18n = new(require('./locale/i18n'));</script>    
   </body>

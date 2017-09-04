@@ -1,4 +1,5 @@
 const database = require('./js/database');
+const {shell} = require('electron')
 
 window.onload = function() {
 
@@ -29,6 +30,7 @@ window.onload = function() {
     // Repopulate the table
     populateTable();
   });
+   // clear the form fields
   document.getElementById('cancel').addEventListener('click', () => {
     firstname.value = '';
     lastname.value = '';
@@ -36,9 +38,11 @@ window.onload = function() {
     city.value = '';
     phone.value = '';
     email.value = '';
-    // remove class for js scope  missing
-    var el = document.getElementById("noDirty");
-    el.classList.remove("is-dirty");
+    // remove class after used
+    var el = document.getElementById('noDirty');
+    if (el.classList.contains('is-dirty')){
+        el.classList.remove('is-dirty');
+    }
   });
 }
 
@@ -52,13 +56,18 @@ function populateTable() {
     var tableBody = '';
     for (i = 0; i < persons.length; i++) {
       tableBody += '<tr>';
-      tableBody += '  <td>' + persons[i].firstname + '</td>';
-      tableBody += '  <td class="mdl-odd">' + persons[i].lastname + '</td>';
-      tableBody += '  <td>' + persons[i].roadaddress + '</td>';
-      tableBody += '  <td class="mdl-odd">' + persons[i].city + '</td>';
-      tableBody += '  <td>' + persons[i].phone + '</td>';
-      tableBody += '  <td class="mdl-odd">' + persons[i].email + '</td>';
-      tableBody += '  <td><input type="button" value="Delete" onclick="deletePerson(\'' + persons[i]._id + '\')"></td>'
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric">' + persons[i].firstname + '</td>';
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric">' + persons[i].lastname + '</td>';
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric">' + persons[i].roadaddress + '</td>';
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric">' + persons[i].city + '</td>';
+      if (persons[i].roadaddress || persons[i].city !="" ){
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric"><button" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" onclick="shell.openExternal(\'https://www.google.it/maps/search/' + persons[i].roadaddress + '+' + persons[i].city + '\')"><i class="material-icons">map</i></button></td>';      
+      } else {
+      tableBody += ' <td class="mdl-data-table__cell--non-numeric"></td>';
+      }
+      tableBody += '  <td><a href="tel:' + persons[i].phone + '">' + persons[i].phone + '</a></td>';
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric"><a href="mailto:' + persons[i].email + '">' + persons[i].email + '</a></td>';
+      tableBody += '  <td class="mdl-data-table__cell--non-numeric"><input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Rimuovi" onclick="deletePerson(\'' + persons[i]._id + '\')"></td>'
       tableBody += '</tr>';
     }
 

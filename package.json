@@ -11,8 +11,10 @@
     "url": "git+https://github.com/tosolini/twRubrica.git"
   },
   "keywords": [
-    "addressbook",
-    "rubrica"
+    "javascript",
+    "windows",
+    "macos",
+    "linux"
   ],
   "author": "Walter Tosolini",
   "license": "GPL-3.0",

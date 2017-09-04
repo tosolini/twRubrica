@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>versions</title>
+    <link rel="stylesheet" href="../node_modules/material-design-lite/material.min.css">
+    </head>
+    <body>
+            <div class="mdl-card__supporting-text">
+                    Build with <script>document.write(process.versions.node)</script>,
+                    Chrome <script>document.write(process.versions.chrome)</script>,
+                    and Electron <script>document.write(process.versions.electron)</script>.
+                       <script>
+                            require('electron').ipcRenderer.on('ping', function(event, message) {
+                              var linguaggio = document.getElementById("linguaggioId");
+                              linguaggio.innerHTML = 'language detected: ' + message;
+                            });
+                          </script>
+                          <p id="linguaggioId"></p>
+                    &copy; 2017. All rights reserved. Code by <a href="https://www.tosolini.info">Tosolini.info</a>
+            </div>
+    </body>
+</html>
